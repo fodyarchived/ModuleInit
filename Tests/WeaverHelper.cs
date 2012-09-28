@@ -14,7 +14,7 @@ public class WeaverHelper
 
     public WeaverHelper(string projectPath)
     {
-        this.projectPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\TestAssemblies", projectPath));
+        this.projectPath = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\", projectPath));
 
         GetAssemblyPath();
 

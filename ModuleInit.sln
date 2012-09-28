@@ -1,30 +1,28 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fody", "Fody\Fody.csproj", "{C3578A7B-09A6-4444-9383-0DEAFA4958BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5A86453B-96FB-4B6E-A283-225BB9F753D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessSilverlight4", "TestAssemblies\AssemblyToProcess\AssemblyToProcessSilverlight4.csproj", "{029B729E-217F-435E-B6F2-FEF6FC0C8E8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessSilverlight4", "AssemblyToProcess\AssemblyToProcessSilverlight4.csproj", "{029B729E-217F-435E-B6F2-FEF6FC0C8E8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessDotNet3.5", "TestAssemblies\AssemblyToProcess\AssemblyToProcessDotNet3.5.csproj", "{9E726D5C-1AB1-4C07-8E8F-6930F35E6835}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessDotNet3.5", "AssemblyToProcess\AssemblyToProcessDotNet3.5.csproj", "{9E726D5C-1AB1-4C07-8E8F-6930F35E6835}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AssembliesToProcess", "AssembliesToProcess", "{546A6338-E25E-4796-AF08-A4742E3BDF7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessDotNet3.5Client", "AssemblyToProcess\AssemblyToProcessDotNet3.5Client.csproj", "{0552C0F4-7EFE-48B5-B4AD-087D6355D6CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessDotNet3.5Client", "TestAssemblies\AssemblyToProcess\AssemblyToProcessDotNet3.5Client.csproj", "{0552C0F4-7EFE-48B5-B4AD-087D6355D6CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessDotNet4Client", "AssemblyToProcess\AssemblyToProcessDotNet4Client.csproj", "{B552D750-49FE-4DB2-8C0B-37471EBE1F76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessDotNet4Client", "TestAssemblies\AssemblyToProcess\AssemblyToProcessDotNet4Client.csproj", "{B552D750-49FE-4DB2-8C0B-37471EBE1F76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessPhone", "AssemblyToProcess\AssemblyToProcessPhone.csproj", "{F883F209-8D17-4A30-8E6C-796219FBF408}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessPhone", "TestAssemblies\AssemblyToProcess\AssemblyToProcessPhone.csproj", "{F883F209-8D17-4A30-8E6C-796219FBF408}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessDotNet4", "TestAssemblies\AssemblyToProcess\AssemblyToProcessDotNet4.csproj", "{7DEC4E2D-F872-434E-A267-0BAD65299950}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessDotNet4", "AssemblyToProcess\AssemblyToProcessDotNet4.csproj", "{7DEC4E2D-F872-434E-A267-0BAD65299950}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NugetProject", "NuGet\NugetProject.csproj", "{63786CE5-D899-43DF-AD4E-C2CA3BAC3FC2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C3578A7B-09A6-4444-9383-0DEAFA4958BD} = {C3578A7B-09A6-4444-9383-0DEAFA4958BD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessSilverlight5", "TestAssemblies\AssemblyToProcess\AssemblyToProcessSilverlight5.csproj", "{F1BAFCE8-5CFB-4029-B943-3481CDA40983}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcessSilverlight5", "AssemblyToProcess\AssemblyToProcessSilverlight5.csproj", "{F1BAFCE8-5CFB-4029-B943-3481CDA40983}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,14 +94,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{9E726D5C-1AB1-4C07-8E8F-6930F35E6835} = {546A6338-E25E-4796-AF08-A4742E3BDF7B}
-		{029B729E-217F-435E-B6F2-FEF6FC0C8E8E} = {546A6338-E25E-4796-AF08-A4742E3BDF7B}
-		{0552C0F4-7EFE-48B5-B4AD-087D6355D6CF} = {546A6338-E25E-4796-AF08-A4742E3BDF7B}
-		{B552D750-49FE-4DB2-8C0B-37471EBE1F76} = {546A6338-E25E-4796-AF08-A4742E3BDF7B}
-		{F883F209-8D17-4A30-8E6C-796219FBF408} = {546A6338-E25E-4796-AF08-A4742E3BDF7B}
-		{7DEC4E2D-F872-434E-A267-0BAD65299950} = {546A6338-E25E-4796-AF08-A4742E3BDF7B}
-		{F1BAFCE8-5CFB-4029-B943-3481CDA40983} = {546A6338-E25E-4796-AF08-A4742E3BDF7B}
 	EndGlobalSection
 EndGlobal
