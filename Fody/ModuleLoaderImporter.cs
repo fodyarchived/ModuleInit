@@ -18,17 +18,17 @@ public class ModuleLoaderImporter
 
     public void Execute()
     {
-        const MethodAttributes attributes = MethodAttributes.Static
-                                            | MethodAttributes.SpecialName
-                                            | MethodAttributes.RTSpecialName;
-        var cctor = GetCctor(attributes);
+        var cctor = GetCctor();
         var il = cctor.Body.GetILProcessor();
         il.Append(il.Create(OpCodes.Call, initializeMethodFinder.InitializeMethod));
         il.Append(il.Create(OpCodes.Ret));
     }
 
-    private MethodDefinition GetCctor(MethodAttributes attributes)
+    MethodDefinition GetCctor()
     {
+        const MethodAttributes attributes = MethodAttributes.Static
+                                            | MethodAttributes.SpecialName
+                                            | MethodAttributes.RTSpecialName;
         var moduleClass = moduleWeaver.ModuleDefinition.Types.FirstOrDefault(x => x.Name == "<Module>");
         if (moduleClass == null)
         {
