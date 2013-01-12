@@ -1,8 +1,8 @@
-## This is an add-in for [Fody](https://github.com/SimonCropp/Fody/) 
+## This is an add-in for [Fody](https://github.com/Fody/Fody/) 
 
 Adds a module initializer to an assembly.
 
-[Introduction to Fody](http://github.com/SimonCropp/Fody/wiki/SampleUsage)
+[Introduction to Fody](http://github.com/Fody/Fody/wiki/SampleUsage)
 
 ## Nuget package http://nuget.org/packages/ModuleInit.Fody 
 
