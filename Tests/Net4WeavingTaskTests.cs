@@ -5,7 +5,7 @@ public class Net4WeavingTaskTests : BaseTaskTests
 {
 
     public Net4WeavingTaskTests()
-        : base(@"AssemblyToProcess\AssemblyToProcessDotNet4.csproj")
+        : base(@"..\..\..\AssemblyToProcess\bin\DebugDotNet4\AssemblyToProcess.dll")
     {
     }
 

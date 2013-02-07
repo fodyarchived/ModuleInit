@@ -6,7 +6,7 @@ public class SL4WeavingTaskTests : BaseTaskTests
 {
 
     public SL4WeavingTaskTests()
-        : base(@"AssemblyToProcess\AssemblyToProcessSilverlight4.csproj")
+        : base(@"..\..\..\AssemblyToProcess\bin\DebugSilverlight4\AssemblyToProcess.dll")
     {
     }
 

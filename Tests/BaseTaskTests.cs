@@ -1,26 +1,36 @@
-﻿using System.Reflection;
+﻿using System.IO;
+using System.Reflection;
+using Mono.Cecil;
 using NUnit.Framework;
 
 public abstract class BaseTaskTests
 {
-    string projectPath;
     Assembly assembly;
+    string beforeAssemblyPath;
+    string afterAssemblyPath;
 
-    protected BaseTaskTests(string projectPath)
+    protected BaseTaskTests(string filePath)
     {
 
+        beforeAssemblyPath = Path.GetFullPath(filePath);
 #if (!DEBUG)
 
-            projectPath = projectPath.Replace("Debug", "Release");
+        beforeAssemblyPath = beforeAssemblyPath.Replace("Debug", "Release");
 #endif
-        this.projectPath = projectPath;
-    }
 
-    [TestFixtureSetUp]
-    public void Setup()
-    {
-        var weaverHelper = new WeaverHelper(projectPath);
-        assembly = weaverHelper.Assembly;
+        afterAssemblyPath = beforeAssemblyPath.Replace(".dll", "2.dll");
+        File.Copy(beforeAssemblyPath, afterAssemblyPath, true);
+
+        var moduleDefinition = ModuleDefinition.ReadModule(afterAssemblyPath);
+        var weavingTask = new ModuleWeaver
+        {
+            ModuleDefinition = moduleDefinition,
+        };
+
+        weavingTask.Execute();
+        moduleDefinition.Write(afterAssemblyPath);
+
+        assembly = Assembly.LoadFile(afterAssemblyPath);
     }
 
 
@@ -37,7 +47,7 @@ public abstract class BaseTaskTests
     [Test]
     public void PeVerify()
     {
-        Verifier.Verify(assembly.CodeBase.Remove(0, 8));
+        Verifier.Verify(beforeAssemblyPath,afterAssemblyPath);
     }
 #endif
 

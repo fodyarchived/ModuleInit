@@ -7,7 +7,7 @@ public class PhoneWeavingTaskTests : BaseTaskTests
 {
 
     public PhoneWeavingTaskTests()
-        : base(@"AssemblyToProcess\AssemblyToProcessPhone.csproj")
+        : base(@"..\..\..\AssemblyToProcess\bin\DebugPhone\AssemblyToProcess.dll")
     {
     }
 

@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Cecil">
       <HintPath>..\Lib\Cecil\Mono.Cecil.dll</HintPath>
@@ -66,8 +67,6 @@
     <Compile Include="PhoneWeavingTaskTests.cs" />
     <Compile Include="SL5WeavingTaskTests.cs" />
     <Compile Include="SL4WeavingTaskTests.cs" />
-    <Compile Include="WeaverHelper.cs" />
-    <Compile Include="XmlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

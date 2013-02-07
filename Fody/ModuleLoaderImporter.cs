@@ -8,6 +8,8 @@ public class ModuleLoaderImporter
     ModuleWeaver moduleWeaver;
     InitializeMethodFinder initializeMethodFinder;
     TypeSystem typeSystem;
+    MethodDefinition cctor;
+    bool isNewCctor;
 
     public ModuleLoaderImporter(ModuleWeaver moduleWeaver, InitializeMethodFinder initializeMethodFinder, TypeSystem typeSystem)
     {
@@ -18,13 +20,16 @@ public class ModuleLoaderImporter
 
     public void Execute()
     {
-        var cctor = GetCctor();
+        GetCctor();
         var il = cctor.Body.GetILProcessor();
         il.Append(il.Create(OpCodes.Call, initializeMethodFinder.InitializeMethod));
-        il.Append(il.Create(OpCodes.Ret));
+        if (isNewCctor)
+        {
+            il.Append(il.Create(OpCodes.Ret));
+        }
     }
 
-    MethodDefinition GetCctor()
+    void GetCctor()
     {
         const MethodAttributes attributes = MethodAttributes.Static
                                             | MethodAttributes.SpecialName
@@ -34,12 +39,13 @@ public class ModuleLoaderImporter
         {
             throw new WeavingException("Found no module class!");
         }
-        var cctor = moduleClass.Methods.FirstOrDefault(x => x.Name == ".cctor");
+         cctor = moduleClass.Methods.FirstOrDefault(x => x.Name == ".cctor");
         if (cctor == null)
         {
+            isNewCctor = true;
             cctor = new MethodDefinition(".cctor", attributes, typeSystem.Void);
             moduleClass.Methods.Add(cctor);
         }
-        return cctor;
+        
     }
 }
