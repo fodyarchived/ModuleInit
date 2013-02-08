@@ -3,16 +3,16 @@ using System.Reflection;
 using Mono.Cecil;
 using NUnit.Framework;
 
-public abstract class BaseTaskTests
+[TestFixture]
+public class TaskTests
 {
     Assembly assembly;
     string beforeAssemblyPath;
     string afterAssemblyPath;
 
-    protected BaseTaskTests(string filePath)
+    public TaskTests()
     {
-
-        beforeAssemblyPath = Path.GetFullPath(filePath);
+        beforeAssemblyPath = Path.GetFullPath(@"..\..\..\AssemblyToProcess\bin\Debug\AssemblyToProcess.dll");
 #if (!DEBUG)
 
         beforeAssemblyPath = beforeAssemblyPath.Replace("Debug", "Release");
