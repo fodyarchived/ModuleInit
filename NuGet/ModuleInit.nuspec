@@ -13,5 +13,8 @@
     <summary />
     <language>en-AU</language>
     <tags>Module, Initializer, Fields, ILWeaving, Fody, ModuleInit, Cecil</tags>
+    <dependencies>
+      <dependency id="Fody"/>
+    </dependencies>
   </metadata>
 </package>
