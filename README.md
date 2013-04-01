@@ -28,3 +28,7 @@ Based on Einar Egilsson's suggestion using cecil to create module initializers [
         ModuleInitializer.Initialize();
     }
 
+
+## Icon
+
+Icon courtesy of [The Noun Project](http://thenounproject.com)
