@@ -9,9 +9,8 @@
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <projectUrl>http://github.com/Fody/ModuleInit</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://raw.github.com/Fody/ModuleInit/master/Icons/icon_100x100.png</iconUrl>
+    <iconUrl>https://raw.github.com/Fody/ModuleInit/master/Icons/package_icon.png</iconUrl> 
     <description>Adds a module initializer to an assembly.</description>
-    <summary />
     <language>en-AU</language>
     <tags>Module, Initializer, Fields, ILWeaving, Fody, ModuleInit, Cecil</tags>
     <dependencies>
