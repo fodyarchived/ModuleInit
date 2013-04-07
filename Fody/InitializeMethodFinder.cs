@@ -1,4 +1,7 @@
+using System;
 using System.Linq;
+using System.Threading;
+using System.Windows.Forms;
 using Mono.Cecil;
 
 public class InitializeMethodFinder
@@ -16,7 +19,15 @@ public class InitializeMethodFinder
         var moduleInitializer = moduleWeaver.ModuleDefinition.GetAllTypeDefinitions().FirstOrDefault(x => x.Name == "ModuleInitializer");
         if (moduleInitializer == null)
         {
-            throw new WeavingException("Cound not find type 'ModuleInitializer'.");
+	        try
+	        {
+		        SetClipboard();
+		        throw new WeavingException("Cound not find type 'ModuleInitializer'. A template has been copied to the Clipboard.");
+	        }
+	        catch (Exception)
+			{
+				throw new WeavingException("Cound not find type 'ModuleInitializer'.");
+	        }
         }
         InitializeMethod = moduleInitializer.Methods.FirstOrDefault(x => x.Name == "Initialize");
         if (InitializeMethod == null)
@@ -37,4 +48,19 @@ public class InitializeMethodFinder
         }
     }
 
+	static void SetClipboard()
+	{
+		var templateClass = @"
+public static class ModuleInitializer
+{
+    public static void Initialize()
+    {
+        //Your code goes here
+    }
+}";
+		var thread = new Thread(() => Clipboard.SetText(templateClass));
+		thread.SetApartmentState(ApartmentState.STA);
+		thread.Start();
+		thread.Join();
+	}
 }
