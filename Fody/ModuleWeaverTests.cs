@@ -4,13 +4,13 @@ using Mono.Cecil;
 using NUnit.Framework;
 
 [TestFixture]
-public class TaskTests
+public class ModuleWeaverTests
 {
     Assembly assembly;
     string beforeAssemblyPath;
     string afterAssemblyPath;
 
-    public TaskTests()
+    public ModuleWeaverTests()
     {
         beforeAssemblyPath = Path.GetFullPath(@"..\..\..\AssemblyToProcess\bin\Debug\AssemblyToProcess.dll");
 #if (!DEBUG)
