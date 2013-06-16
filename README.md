@@ -1,5 +1,7 @@
 ## This is an add-in for [Fody](https://github.com/Fody/Fody/) 
 
+![Icon](https://raw.github.com/Fody/ModuleInit/master/Icons/package_icon.png)
+
 Adds a module initializer to an assembly.
 
 [Introduction to Fody](http://github.com/Fody/Fody/wiki/SampleUsage)
