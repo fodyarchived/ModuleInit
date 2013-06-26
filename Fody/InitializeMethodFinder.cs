@@ -22,11 +22,11 @@ public class InitializeMethodFinder
 	        try
 	        {
 		        SetClipboard();
-		        throw new WeavingException("Cound not find type 'ModuleInitializer'. A template has been copied to the Clipboard.");
+		        throw new WeavingException("Could not find type 'ModuleInitializer'. A template has been copied to the Clipboard.");
 	        }
 	        catch (Exception)
 			{
-				throw new WeavingException("Cound not find type 'ModuleInitializer'.");
+				throw new WeavingException("Could not find type 'ModuleInitializer'.");
 	        }
         }
         InitializeMethod = moduleInitializer.Methods.FirstOrDefault(x => x.Name == "Initialize");
