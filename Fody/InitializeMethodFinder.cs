@@ -6,17 +6,12 @@ using Mono.Cecil;
 
 public class InitializeMethodFinder
 {
-    ModuleWeaver moduleWeaver;
+    public ModuleWeaver ModuleWeaver;
     public MethodDefinition InitializeMethod;
-
-    public InitializeMethodFinder(ModuleWeaver moduleWeaver)
-    {
-        this.moduleWeaver = moduleWeaver;
-    }
 
     public void Execute()
     {
-        var moduleInitializer = moduleWeaver.ModuleDefinition.GetAllTypeDefinitions().FirstOrDefault(x => x.Name == "ModuleInitializer");
+        var moduleInitializer = ModuleWeaver.ModuleDefinition.GetAllTypeDefinitions().FirstOrDefault(x => x.Name == "ModuleInitializer");
         if (moduleInitializer == null)
         {
 	        try

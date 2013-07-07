@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Mono.Cecil;
+using Mono.Cecil.Cil;
+using Mono.Collections.Generic;
 
 public static class CecilExtensions
 {
@@ -21,8 +23,14 @@ public static class CecilExtensions
 
         }
     }
-    public static bool ContainsAttribute(this IEnumerable<CustomAttribute> attributes, string attributeName)
+    public static void Replace(this Collection<Instruction> collection, Instruction instruction, IEnumerable<Instruction> instructions)
     {
-        return attributes.Any(attribute => attribute.Constructor.DeclaringType.Name == attributeName);
+        var indexOf = collection.IndexOf(instruction);
+        collection.RemoveAt(indexOf);
+        foreach (var instruction1 in instructions)
+        {
+            collection.Insert(indexOf, instruction1);
+            indexOf++;
+        }
     }
 }

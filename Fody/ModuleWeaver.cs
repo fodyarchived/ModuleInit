@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Reflection;
 using Mono.Cecil;
 
 public class ModuleWeaver
 {
-    static Assembly assembly;
     public Action<string> LogInfo { get; set; }
     public ModuleDefinition ModuleDefinition { get; set; }
-
-    static ModuleWeaver()
-    {
-        assembly = typeof (ModuleWeaver).Assembly;
-    }
 
     public ModuleWeaver()
     {
@@ -20,9 +13,17 @@ public class ModuleWeaver
 
     public void Execute()
     {
-        var initializeMethodFinder = new InitializeMethodFinder(this);
+        var initializeMethodFinder = new InitializeMethodFinder
+                                     {
+                                         ModuleWeaver = this
+                                     };
         initializeMethodFinder.Execute();
-        var importer = new ModuleLoaderImporter(this, initializeMethodFinder, ModuleDefinition.TypeSystem);
+        var importer = new ModuleLoaderImporter
+                       {
+                           InitializeMethodFinder = initializeMethodFinder,
+                           ModuleWeaver = this,
+                           TypeSystem = ModuleDefinition.TypeSystem
+                       };
         importer.Execute();
     }
 }

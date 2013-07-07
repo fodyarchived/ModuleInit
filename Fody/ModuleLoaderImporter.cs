@@ -1,38 +1,57 @@
 using System.Linq;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
+using Mono.Cecil.Rocks;
 
 
 public class ModuleLoaderImporter
 {
-	ModuleWeaver moduleWeaver;
-	InitializeMethodFinder initializeMethodFinder;
-	TypeSystem typeSystem;
-
-	public ModuleLoaderImporter(ModuleWeaver moduleWeaver, InitializeMethodFinder initializeMethodFinder, TypeSystem typeSystem)
-	{
-		this.moduleWeaver = moduleWeaver;
-		this.initializeMethodFinder = initializeMethodFinder;
-		this.typeSystem = typeSystem;
-	}
+	public ModuleWeaver ModuleWeaver;
+    public InitializeMethodFinder InitializeMethodFinder;
+    public TypeSystem TypeSystem;
 
 	public void Execute()
 	{
-		var moduleClass = moduleWeaver.ModuleDefinition.Types.FirstOrDefault(x => x.Name == "<Module>");
+		var moduleClass = ModuleWeaver
+            .ModuleDefinition
+            .Types
+            .FirstOrDefault(x => x.Name == "<Module>");
 		if (moduleClass == null)
 		{
 			throw new WeavingException("Found no module class!");
 		}
-		var cctor = moduleClass.Methods.FirstOrDefault(x => x.Name == ".cctor");
-		if (cctor == null)
-		{
-			var attributes = MethodAttributes.Static
-			                 | MethodAttributes.SpecialName
-			                 | MethodAttributes.RTSpecialName;
-			cctor = new MethodDefinition(".cctor", attributes, typeSystem.Void);
-			moduleClass.Methods.Add(cctor);
-			cctor.Body.Instructions.Add(Instruction.Create(OpCodes.Ret));
-		}
-		cctor.Body.Instructions.Insert(0, Instruction.Create(OpCodes.Call, initializeMethodFinder.InitializeMethod));
+		var cctor = FindOrCreateCctor(moduleClass);
+	    var body = cctor.Body;
+	    body.SimplifyMacros();
+        var returnPoints = body.Instructions
+            .Where(x => x.OpCode == OpCodes.Ret)
+            .ToList();
+
+	    foreach (var instruction in returnPoints)
+	    {
+	        body.Instructions.Replace(instruction,
+	            new[]
+	            {
+	                Instruction.Create(OpCodes.Call, InitializeMethodFinder.InitializeMethod),
+	                Instruction.Create(OpCodes.Ret)
+	            });
+	    }
+
+	    body.OptimizeMacros();
 	}
+
+    MethodDefinition FindOrCreateCctor(TypeDefinition moduleClass)
+    {
+        var cctor = moduleClass.Methods.FirstOrDefault(x => x.Name == ".cctor");
+        if (cctor == null)
+        {
+            var attributes = MethodAttributes.Static
+                             | MethodAttributes.SpecialName
+                             | MethodAttributes.RTSpecialName;
+            cctor = new MethodDefinition(".cctor", attributes, TypeSystem.Void);
+            moduleClass.Methods.Add(cctor);
+            cctor.Body.Instructions.Add(Instruction.Create(OpCodes.Ret));
+        }
+        return cctor;
+    }
 }
