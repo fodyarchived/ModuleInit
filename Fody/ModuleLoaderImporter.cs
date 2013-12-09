@@ -45,7 +45,9 @@ public class ModuleLoaderImporter
         var cctor = moduleClass.Methods.FirstOrDefault(x => x.Name == ".cctor");
         if (cctor == null)
         {
-            var attributes = MethodAttributes.Static
+            var attributes = MethodAttributes.Private
+                             | MethodAttributes.HideBySig
+                             | MethodAttributes.Static
                              | MethodAttributes.SpecialName
                              | MethodAttributes.RTSpecialName;
             cctor = new MethodDefinition(".cctor", attributes, TypeSystem.Void);
