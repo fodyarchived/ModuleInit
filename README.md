@@ -6,11 +6,13 @@ Adds a module initializer to an assembly.
 
 [Introduction to Fody](http://github.com/Fody/Fody/wiki/SampleUsage)
 
-## Nuget package http://nuget.org/packages/ModuleInit.Fody 
+## Nuget package
 
-Based on Einar Egilsson's suggestion using cecil to create module initializers [http://tech.einaregilsson.com/2009/12/16/module-initializers-in-csharp/]
+http://nuget.org/packages/ModuleInit.Fody 
 
 ## What it does 
+
+Based on Einar Egilsson's suggestion using cecil to create module initializers [http://tech.einaregilsson.com/2009/12/16/module-initializers-in-csharp/]
 
 ### Finds a class, in the target assembly, named 'ModuleInitializer' with the following form.
 
