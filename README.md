@@ -6,9 +6,11 @@ Adds a module initializer to an assembly.
 
 [Introduction to Fody](http://github.com/Fody/Fody/wiki/SampleUsage)
 
-## Nuget package
+## The nuget package  [![NuGet Status](http://img.shields.io/nuget/v/ModuleInit.Fody.svg?style=flat)](https://www.nuget.org/packages/ModuleInit.Fody/)
 
-http://nuget.org/packages/ModuleInit.Fody 
+https://nuget.org/packages/ModuleInit.Fody/
+
+    PM> Install-Package ModuleInit.Fody
 
 ## What it does 
 
