@@ -27,19 +27,19 @@ public class InitializeMethodFinder
         InitializeMethod = moduleInitializer.Methods.FirstOrDefault(x => x.Name == "Initialize");
         if (InitializeMethod == null)
         {
-            throw new WeavingException(string.Format("Could not find 'Initialize' method on '{0}'.", moduleInitializer.FullName));
+            throw new WeavingException($"Could not find 'Initialize' method on '{moduleInitializer.FullName}'.");
         }
         if (!InitializeMethod.IsPublic)
         {
-            throw new WeavingException(string.Format("Method '{0}' is not public.", InitializeMethod.FullName));
+            throw new WeavingException($"Method '{InitializeMethod.FullName}' is not public.");
         }
         if (!InitializeMethod.IsStatic)
         {
-            throw new WeavingException(string.Format("Method '{0}' is not static.", InitializeMethod.FullName));
+            throw new WeavingException($"Method '{InitializeMethod.FullName}' is not static.");
         }
         if (InitializeMethod.Parameters.Count > 0)
         {
-            throw new WeavingException(string.Format("Method '{0}' has parameters.", InitializeMethod.FullName));
+            throw new WeavingException($"Method '{InitializeMethod.FullName}' has parameters.");
         }
     }
 
