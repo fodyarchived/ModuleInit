@@ -1,20 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 14.0.22823.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fody", "Fody\Fody.csproj", "{C3578A7B-09A6-4444-9383-0DEAFA4958BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fody", "Fody\Fody.csproj", "{C3578A7B-09A6-4444-9383-0DEAFA4958BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcess", "AssemblyToProcess\AssemblyToProcess.csproj", "{7DEC4E2D-F872-434E-A267-0BAD65299950}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyToProcess", "AssemblyToProcess\AssemblyToProcess.csproj", "{7DEC4E2D-F872-434E-A267-0BAD65299950}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{BAE1049E-2245-4175-9E1F-0D774A1D2419}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{BAE1049E-2245-4175-9E1F-0D774A1D2419}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7DEC4E2D-F872-434E-A267-0BAD65299950} = {7DEC4E2D-F872-434E-A267-0BAD65299950}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
-		Deployable|Any CPU = Deployable|Any CPU
-		Deployable|x86 = Deployable|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -22,18 +23,12 @@ Global
 		{C3578A7B-09A6-4444-9383-0DEAFA4958BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C3578A7B-09A6-4444-9383-0DEAFA4958BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3578A7B-09A6-4444-9383-0DEAFA4958BD}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C3578A7B-09A6-4444-9383-0DEAFA4958BD}.Deployable|Any CPU.ActiveCfg = Deployable|Any CPU
-		{C3578A7B-09A6-4444-9383-0DEAFA4958BD}.Deployable|Any CPU.Build.0 = Deployable|Any CPU
-		{C3578A7B-09A6-4444-9383-0DEAFA4958BD}.Deployable|x86.ActiveCfg = Deployable|Any CPU
 		{C3578A7B-09A6-4444-9383-0DEAFA4958BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3578A7B-09A6-4444-9383-0DEAFA4958BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3578A7B-09A6-4444-9383-0DEAFA4958BD}.Release|x86.ActiveCfg = Release|Any CPU
 		{7DEC4E2D-F872-434E-A267-0BAD65299950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7DEC4E2D-F872-434E-A267-0BAD65299950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DEC4E2D-F872-434E-A267-0BAD65299950}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7DEC4E2D-F872-434E-A267-0BAD65299950}.Deployable|Any CPU.ActiveCfg = Deployable|Any CPU
-		{7DEC4E2D-F872-434E-A267-0BAD65299950}.Deployable|Any CPU.Build.0 = Deployable|Any CPU
-		{7DEC4E2D-F872-434E-A267-0BAD65299950}.Deployable|x86.ActiveCfg = Deployable|Any CPU
 		{7DEC4E2D-F872-434E-A267-0BAD65299950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DEC4E2D-F872-434E-A267-0BAD65299950}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7DEC4E2D-F872-434E-A267-0BAD65299950}.Release|x86.ActiveCfg = Release|Any CPU
@@ -41,10 +36,6 @@ Global
 		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Debug|x86.Build.0 = Debug|Any CPU
-		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Deployable|Any CPU.ActiveCfg = Debug|Any CPU
-		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Deployable|Any CPU.Build.0 = Debug|Any CPU
-		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Deployable|x86.ActiveCfg = Debug|Any CPU
-		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Deployable|x86.Build.0 = Debug|Any CPU
 		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Release|x86.ActiveCfg = Release|Any CPU
@@ -52,5 +43,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB403931-6C4A-4BA0-9E12-FD553B311B7E}
 	EndGlobalSection
 EndGlobal

@@ -13,17 +13,17 @@ public class ModuleWeaver
 
     public void Execute()
     {
-        var initializeMethodFinder = new InitializeMethodFinder
-                                     {
-                                         ModuleWeaver = this
-                                     };
-        initializeMethodFinder.Execute();
+        var finder = new InitializeMethodFinder
+        {
+            ModuleWeaver = this
+        };
+        finder.Execute();
         var importer = new ModuleLoaderImporter
-                       {
-                           InitializeMethodFinder = initializeMethodFinder,
-                           ModuleWeaver = this,
-                           TypeSystem = ModuleDefinition.TypeSystem
-                       };
+        {
+            InitializeMethodFinder = finder,
+            ModuleWeaver = this,
+            TypeSystem = ModuleDefinition.TypeSystem
+        };
         importer.Execute();
     }
 }

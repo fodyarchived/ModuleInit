@@ -45,6 +45,6 @@ public static class Verifier
 
     static string TrimLineNumbers(string foo)
     {
-        return Regex.Replace(foo, @"0x.*]", "");
+        return Regex.Replace(foo, "0x.*]", "");
     }
 }
