@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net452</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="FodyCecil" Version="2.*" />
+    <PackageReference Include="PepitaPackage" Version="*" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Compile Include="..\CommonAssemblyInfo.cs" />
+  </ItemGroup>
+  <Target Name="BuildNugets" AfterTargets="CopyFilesToOutputDirectory">
+    <ItemGroup>
+      <FilesToDelete Include="$(SolutionDir)nugets\**\*.*" />
+    </ItemGroup>
+    <Delete Files="@(FilesToDelete)" />
+    <MakeDir Directories="$(SolutionDir)nugets" />
+    <Copy SourceFiles="$(ProjectDir)ModuleInit.Fody.nuspec" DestinationFolder="$(SolutionDir)nugets" />
+    <Copy SourceFiles="$(OutputPath)ModuleInit.Fody.dll" DestinationFolder="$(SolutionDir)nugets" />
+    <Copy SourceFiles="$(OutputPath)ModuleInit.Fody.pdb" DestinationFolder="$(SolutionDir)nugets" />
+    <PepitaPackage.CreatePackageTask NuGetBuildDirectory="$(SolutionDir)nugets" MetadataAssembly="$(OutputPath)ModuleInit.Fody.dll" />
+  </Target>
+</Project>

@@ -7,18 +7,13 @@ using NUnit.Framework;
 public class ModuleWeaverTests
 {
     Assembly assembly;
-    string beforeAssemblyPath;
-    string afterAssemblyPath;
 
     public ModuleWeaverTests()
     {
-        var path = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\..\AssemblyToProcess\bin\Debug\net462\AssemblyToProcess.dll");
-        beforeAssemblyPath = Path.GetFullPath(path);
-#if (!DEBUG)
-        beforeAssemblyPath = beforeAssemblyPath.Replace("Debug", "Release");
-#endif
+        var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "AssemblyToProcess.dll");
+        var beforeAssemblyPath = Path.GetFullPath(path);
 
-        afterAssemblyPath = beforeAssemblyPath.Replace(".dll", "2.dll");
+        var afterAssemblyPath = beforeAssemblyPath.Replace(".dll", "2.dll");
         File.Copy(beforeAssemblyPath, afterAssemblyPath, true);
 
         using (var moduleDefinition = ModuleDefinition.ReadModule(beforeAssemblyPath))
@@ -33,8 +28,10 @@ public class ModuleWeaverTests
         }
 
         assembly = Assembly.LoadFile(afterAssemblyPath);
+#if(DEBUG)
+        Verifier.Verify(beforeAssemblyPath, afterAssemblyPath);
+#endif
     }
-
 
     [Test]
     public void WithFields()
@@ -43,14 +40,4 @@ public class ModuleWeaverTests
         var info = type.GetField("InitializeCalled", BindingFlags.Static | BindingFlags.Public);
         Assert.IsTrue((bool)info.GetValue(null));
     }
-
-
-#if(DEBUG)
-    [Test]
-    public void PeVerify()
-    {
-        Verifier.Verify(beforeAssemblyPath,afterAssemblyPath);
-    }
-#endif
-
 }

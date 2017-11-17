@@ -3,7 +3,6 @@ using Mono.Cecil;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
 
-
 public class ModuleLoaderImporter
 {
     public ModuleWeaver ModuleWeaver;
