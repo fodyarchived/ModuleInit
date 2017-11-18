@@ -2,18 +2,21 @@
 using System.Reflection;
 using Mono.Cecil;
 using NUnit.Framework;
+// ReSharper disable PrivateFieldCanBeConvertedToLocalVariable
 
 [TestFixture]
 public class ModuleWeaverTests
 {
     Assembly assembly;
+    string beforeAssemblyPath;
+    string afterAssemblyPath;
 
     public ModuleWeaverTests()
     {
         var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "AssemblyToProcess.dll");
-        var beforeAssemblyPath = Path.GetFullPath(path);
+        beforeAssemblyPath = Path.GetFullPath(path);
 
-        var afterAssemblyPath = beforeAssemblyPath.Replace(".dll", "2.dll");
+        afterAssemblyPath = beforeAssemblyPath.Replace(".dll", "2.dll");
         File.Copy(beforeAssemblyPath, afterAssemblyPath, true);
 
         using (var moduleDefinition = ModuleDefinition.ReadModule(beforeAssemblyPath))
@@ -28,9 +31,6 @@ public class ModuleWeaverTests
         }
 
         assembly = Assembly.LoadFile(afterAssemblyPath);
-#if(DEBUG)
-        Verifier.Verify(beforeAssemblyPath, afterAssemblyPath);
-#endif
     }
 
     [Test]
@@ -40,4 +40,12 @@ public class ModuleWeaverTests
         var info = type.GetField("InitializeCalled", BindingFlags.Static | BindingFlags.Public);
         Assert.IsTrue((bool)info.GetValue(null));
     }
+
+#if (NET452)
+    [Test]
+    public void Verify()
+    {
+        Verifier.Verify(beforeAssemblyPath, afterAssemblyPath);
+    }
+#endif
 }
