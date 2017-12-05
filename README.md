@@ -11,14 +11,36 @@ Adds a module initializer to an assembly.
 [Introduction to Fody](http://github.com/Fody/Fody/wiki/SampleUsage)
 
 
-## The nuget package
+## Usage
 
-https://nuget.org/packages/ModuleInit.Fody/
-
-    PM> Install-Package ModuleInit.Fody
+See also [Fody usage](https://github.com/Fody/Fody#usage).
 
 
-## What it does 
+### NuGet installation
+
+Install the [ModuleInit.Fody NuGet package](https://nuget.org/packages/ModuleInit.Fody/) and update the [Fody NuGet package](https://nuget.org/packages/Fody/):
+
+```
+PM> Install-Package ModuleInit.Fody
+PM> Update-Package Fody
+```
+
+The `Update-Package Fody` is required since NuGet always defaults to the oldest, and most buggy, version of any dependency.
+
+
+### Add to FodyWeavers.xml
+
+Add `<ModuleInit/>` to [FodyWeavers.xml](https://github.com/Fody/Fody#add-fodyweaversxml)
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Weavers>
+  <ModuleInit/>
+</Weavers>
+```
+
+
+## What it does
 
 Based on Einar Egilsson's suggestion using cecil to create module initializers [http://tech.einaregilsson.com/2009/12/16/module-initializers-in-csharp/]
 
