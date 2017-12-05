@@ -6,7 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FodyCecil" Version="2.*" />
-    <PackageReference Include="PepitaPackage" Version="*" />
+    <PackageReference Include="PepitaPackage" Version="1.*" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Compile Include="..\CommonAssemblyInfo.cs" />
