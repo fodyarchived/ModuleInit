@@ -8,7 +8,9 @@ public class InitializeMethodFinder
 
     public void Execute()
     {
-        var moduleInitializer = ModuleWeaver.ModuleDefinition.GetAllTypeDefinitions().FirstOrDefault(x => x.Name == "ModuleInitializer");
+        var moduleInitializer = ModuleWeaver.ModuleDefinition
+            .GetTypes()
+            .SingleOrDefault(x => x.Name == "ModuleInitializer");
         if (moduleInitializer == null)
         {
             throw new WeavingException(@"Could not find type 'ModuleInitializer'.

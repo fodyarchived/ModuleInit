@@ -1,17 +1,10 @@
-﻿using System;
-using Mono.Cecil;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Fody;
 
-public class ModuleWeaver
+public class ModuleWeaver : BaseModuleWeaver
 {
-    public Action<string> LogInfo { get; set; }
-    public ModuleDefinition ModuleDefinition { get; set; }
-
-    public ModuleWeaver()
-    {
-        LogInfo = s => { };
-    }
-
-    public void Execute()
+    public override void Execute()
     {
         var finder = new InitializeMethodFinder
         {
@@ -25,5 +18,24 @@ public class ModuleWeaver
             TypeSystem = ModuleDefinition.TypeSystem
         };
         importer.Execute();
+        CleanReferences();
+    }
+
+    public override IEnumerable<string> GetAssembliesForScanning()
+    {
+        return Enumerable.Empty<string>();
+    }
+
+    public void CleanReferences()
+    {
+        var referenceToRemove = ModuleDefinition.AssemblyReferences.FirstOrDefault(x => x.Name == "ModuleInit");
+        if (referenceToRemove == null)
+        {
+            LogDebug("\tNo reference to 'ModuleInit' found. References not modified.");
+            return;
+        }
+
+        ModuleDefinition.AssemblyReferences.Remove(referenceToRemove);
+        LogInfo("\tRemoving reference to 'ModuleInit'.");
     }
 }

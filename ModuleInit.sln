@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 14.0.22823.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleInit.Fody", "ModuleInit.Fody\ModuleInit.Fody.csproj", "{C3578A7B-09A6-4444-9383-0DEAFA4958BD}"
 EndProject
@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj
 	ProjectSection(ProjectDependencies) = postProject
 		{7DEC4E2D-F872-434E-A267-0BAD65299950} = {7DEC4E2D-F872-434E-A267-0BAD65299950}
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleInit", "ModuleInit\ModuleInit.csproj", "{CCA70C2F-B738-4372-836C-3032B8240B1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +42,14 @@ Global
 		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Release|x86.ActiveCfg = Release|Any CPU
 		{BAE1049E-2245-4175-9E1F-0D774A1D2419}.Release|x86.Build.0 = Release|Any CPU
+		{CCA70C2F-B738-4372-836C-3032B8240B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA70C2F-B738-4372-836C-3032B8240B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA70C2F-B738-4372-836C-3032B8240B1A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CCA70C2F-B738-4372-836C-3032B8240B1A}.Debug|x86.Build.0 = Debug|Any CPU
+		{CCA70C2F-B738-4372-836C-3032B8240B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA70C2F-B738-4372-836C-3032B8240B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCA70C2F-B738-4372-836C-3032B8240B1A}.Release|x86.ActiveCfg = Release|Any CPU
+		{CCA70C2F-B738-4372-836C-3032B8240B1A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

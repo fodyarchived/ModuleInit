@@ -2,6 +2,7 @@
 <Project>
   <PropertyGroup>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PackageVersion>1.7.0</PackageVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 </Project>
