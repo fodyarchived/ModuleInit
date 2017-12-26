@@ -17,7 +17,7 @@ public class ModuleLoaderImporter
             .FirstOrDefault(x => x.Name == "<Module>");
         if (moduleClass == null)
         {
-            throw new WeavingException("Found no module class!");
+            throw new WeavingException("Found no module class.");
         }
         var cctor = FindOrCreateCctor(moduleClass);
         var body = cctor.Body;
