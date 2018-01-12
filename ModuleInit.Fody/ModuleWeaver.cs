@@ -18,7 +18,6 @@ public class ModuleWeaver : BaseModuleWeaver
             TypeSystem = ModuleDefinition.TypeSystem
         };
         importer.Execute();
-        CleanReferences();
     }
 
     public override IEnumerable<string> GetAssembliesForScanning()
@@ -26,16 +25,5 @@ public class ModuleWeaver : BaseModuleWeaver
         return Enumerable.Empty<string>();
     }
 
-    public void CleanReferences()
-    {
-        var referenceToRemove = ModuleDefinition.AssemblyReferences.FirstOrDefault(x => x.Name == "ModuleInit");
-        if (referenceToRemove == null)
-        {
-            LogDebug("\tNo reference to 'ModuleInit' found. References not modified.");
-            return;
-        }
-
-        ModuleDefinition.AssemblyReferences.Remove(referenceToRemove);
-        LogInfo("\tRemoving reference to 'ModuleInit'.");
-    }
+    public override bool ShouldCleanReference => true;
 }
