@@ -4,7 +4,7 @@
 
 ## This is an add-in for [Fody](https://github.com/Fody/Fody/) 
 
-![Icon](https://raw.github.com/Fody/ModuleInit/master/package_icon.png)
+![Icon](https://raw.githubusercontent.com/Fody/ModuleInit/master/package_icon.png)
 
 Adds a module initializer to an assembly.
 
