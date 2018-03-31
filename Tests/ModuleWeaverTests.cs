@@ -11,7 +11,7 @@ public class ModuleWeaverTests
     public void WithFields()
     {
         var weavingTask = new ModuleWeaver();
-        var testResult = weavingTask.ExecuteTestRun("AssemblyToProcess.dll");
+        var testResult = weavingTask.ExecuteTestRun("AssemblyToProcess.dll", false);
         var type = testResult.Assembly.GetType("ModuleInitializer");
         var info = type.GetField("InitializeCalled", BindingFlags.Static | BindingFlags.Public);
         Assert.True((bool)info.GetValue(null));
