@@ -15,7 +15,7 @@ public class ModuleWeaver : BaseModuleWeaver
         {
             InitializeMethodFinder = finder,
             ModuleWeaver = this,
-            TypeSystem = ModuleDefinition.TypeSystem
+            TypeSystem = TypeSystem
         };
         importer.Execute();
     }

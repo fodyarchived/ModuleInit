@@ -3,6 +3,7 @@ using Fody;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
 using Mono.Cecil.Rocks;
+using TypeSystem = Fody.TypeSystem;
 
 public class ModuleLoaderImporter
 {
@@ -50,7 +51,7 @@ public class ModuleLoaderImporter
                              | MethodAttributes.Static
                              | MethodAttributes.SpecialName
                              | MethodAttributes.RTSpecialName;
-            cctor = new MethodDefinition(".cctor", attributes, TypeSystem.Void);
+            cctor = new MethodDefinition(".cctor", attributes, TypeSystem.VoidReference);
             moduleClass.Methods.Add(cctor);
             cctor.Body.Instructions.Add(Instruction.Create(OpCodes.Ret));
         }
