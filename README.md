@@ -21,11 +21,11 @@ See also [Fody usage](https://github.com/Fody/Fody#usage).
 Install the [ModuleInit.Fody NuGet package](https://nuget.org/packages/ModuleInit.Fody/) and update the [Fody NuGet package](https://nuget.org/packages/Fody/):
 
 ```
+PM> Package Fody
 PM> Install-Package ModuleInit.Fody
-PM> Update-Package Fody
 ```
 
-The `Update-Package Fody` is required since NuGet always defaults to the oldest, and most buggy, version of any dependency.
+The `Install-Package Fody` is required since NuGet always defaults to the oldest, and most buggy, version of any dependency.
 
 
 ### Add to FodyWeavers.xml
