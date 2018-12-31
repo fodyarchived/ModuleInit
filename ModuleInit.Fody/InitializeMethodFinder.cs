@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Fody;
 using Mono.Cecil;
@@ -5,14 +6,14 @@ using Mono.Cecil;
 public class InitializeMethodFinder
 {
     public ModuleWeaver ModuleWeaver;
-    public MethodDefinition InitializeMethod;
+    public List<MethodDefinition> InitializeMethods = new List<MethodDefinition>();
 
     public void Execute()
     {
-        var moduleInitializer = ModuleWeaver.ModuleDefinition
+        var moduleInitializers = ModuleWeaver.ModuleDefinition
             .GetTypes()
-            .SingleOrDefault(x => x.Name == "ModuleInitializer");
-        if (moduleInitializer == null)
+            .Where(x => x.Name == "ModuleInitializer").ToList();
+        if (moduleInitializers.Count == 0)
         {
             throw new WeavingException(@"Could not find type 'ModuleInitializer'.
 public static class ModuleInitializer
@@ -24,22 +25,34 @@ public static class ModuleInitializer
 }");
         }
 
-        InitializeMethod = moduleInitializer.Methods.FirstOrDefault(x => x.Name == "Initialize");
-        if (InitializeMethod == null)
+        foreach (var moduleInitializer in moduleInitializers)
+        {
+            Add(moduleInitializer);
+        }
+    }
+
+    void Add(TypeDefinition moduleInitializer)
+    {
+        var initializeMethod = moduleInitializer.Methods.FirstOrDefault(x => x.Name == "Initialize");
+        if (initializeMethod == null)
         {
             throw new WeavingException($"Could not find 'Initialize' method on '{moduleInitializer.FullName}'.");
         }
-        if (!InitializeMethod.IsPublic)
+
+        if (!initializeMethod.IsPublic)
         {
-            throw new WeavingException($"Method '{InitializeMethod.FullName}' is not public.");
+            throw new WeavingException($"Method '{initializeMethod.FullName}' is not public.");
         }
-        if (!InitializeMethod.IsStatic)
+
+        if (!initializeMethod.IsStatic)
         {
-            throw new WeavingException($"Method '{InitializeMethod.FullName}' is not static.");
+            throw new WeavingException($"Method '{initializeMethod.FullName}' is not static.");
         }
-        if (InitializeMethod.Parameters.Count > 0)
+
+        if (initializeMethod.Parameters.Count > 0)
         {
-            throw new WeavingException($"Method '{InitializeMethod.FullName}' has parameters.");
+            throw new WeavingException($"Method '{initializeMethod.FullName}' has parameters.");
         }
+        InitializeMethods.Add(initializeMethod);
     }
 }

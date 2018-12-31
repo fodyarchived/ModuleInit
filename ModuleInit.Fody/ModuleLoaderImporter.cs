@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Fody;
 using Mono.Cecil;
@@ -21,6 +22,7 @@ public class ModuleLoaderImporter
         {
             throw new WeavingException("Found no module class.");
         }
+
         var cctor = FindOrCreateCctor(moduleClass);
         var body = cctor.Body;
         body.SimplifyMacros();
@@ -30,12 +32,10 @@ public class ModuleLoaderImporter
 
         foreach (var instruction in returnPoints)
         {
-            body.Instructions.Replace(instruction,
-                new[]
-                {
-                    Instruction.Create(OpCodes.Call, InitializeMethodFinder.InitializeMethod),
-                    Instruction.Create(OpCodes.Ret)
-                });
+            var instructions = new List<Instruction>();
+            instructions.AddRange(InitializeMethodFinder.InitializeMethods.Select(x => Instruction.Create(OpCodes.Call, x)));
+            instructions.Add(Instruction.Create(OpCodes.Ret));
+            body.Instructions.Replace(instruction, instructions);
         }
 
         body.OptimizeMacros();
