@@ -2,18 +2,16 @@
 [![NuGet Status](http://img.shields.io/nuget/v/ModuleInit.Fody.svg?style=flat&max-age=86400)](https://www.nuget.org/packages/ModuleInit.Fody/)
 
 
-## This is an add-in for [Fody](https://github.com/Fody/Fody/) 
+## This is an add-in for [Fody](https://github.com/Fody/Home/)
 
 ![Icon](https://raw.githubusercontent.com/Fody/ModuleInit/master/package_icon.png)
 
 Adds a module initializer to an assembly.
 
-[Introduction to Fody](http://github.com/Fody/Fody/wiki/SampleUsage)
-
 
 ## Usage
 
-See also [Fody usage](https://github.com/Fody/Fody#usage).
+See also [Fody usage](https://github.com/Fody/Home/blob/master/pages/usage.md).
 
 
 ### NuGet installation
@@ -30,7 +28,7 @@ The `Install-Package Fody` is required since NuGet always defaults to the oldest
 
 ### Add to FodyWeavers.xml
 
-Add `<ModuleInit/>` to [FodyWeavers.xml](https://github.com/Fody/Fody#add-fodyweaversxml)
+Add `<ModuleInit/>` to [FodyWeavers.xml](https://github.com/Fody/Home/blob/master/pages/usage.md#add-fodyweaversxml)
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
