@@ -19,7 +19,7 @@ See also [Fody usage](https://github.com/Fody/Home/blob/master/pages/usage.md).
 Install the [ModuleInit.Fody NuGet package](https://nuget.org/packages/ModuleInit.Fody/) and update the [Fody NuGet package](https://nuget.org/packages/Fody/):
 
 ```
-PM> Package Fody
+PM> Install-Package Fody
 PM> Install-Package ModuleInit.Fody
 ```
 
