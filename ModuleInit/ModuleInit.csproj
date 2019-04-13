@@ -8,9 +8,11 @@
     <Description>Adds a module initializer to an assembly.</Description>
     <PackageTags>Module, Initializer, Fields, ILWeaving, Fody, ModuleInit, Cecil</PackageTags>
     <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
+    <PackageIconUrl>https://raw.githubusercontent.com/Fody/ModuleInit/master/package_icon.png</PackageIconUrl>
+    <PackageProjectUrl>http://github.com/Fody/ModuleInit</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Fody" Version="5.0.0-beta.7" PrivateAssets="None" />
-    <PackageReference Include="FodyPackaging" Version="5.0.0-beta.7" PrivateAssets="All" />
+    <PackageReference Include="Fody" Version="5.0.0-beta.11" PrivateAssets="None" />
+    <PackageReference Include="FodyPackaging" Version="5.0.0-beta.11" PrivateAssets="All" />
   </ItemGroup>
 </Project>

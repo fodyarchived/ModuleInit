@@ -1,11 +1,12 @@
 ﻿using System.Reflection;
 using Fody;
 using Xunit;
-#pragma warning disable 618
+
 
 // ReSharper disable PrivateFieldCanBeConvertedToLocalVariable
 
-public class ModuleWeaverTests
+public class ModuleWeaverTests :
+    XunitLoggingBase
 {
     [Fact]
     public void WithFields()
