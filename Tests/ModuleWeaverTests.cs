@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Fody;
 using Xunit;
-
+using Xunit.Abstractions;
 
 // ReSharper disable PrivateFieldCanBeConvertedToLocalVariable
 
@@ -25,5 +25,10 @@ public class ModuleWeaverTests :
         var type = testResult.Assembly.GetType(name);
         var info = type.GetField("InitializeCalled", BindingFlags.Static | BindingFlags.Public);
         Assert.True((bool)info.GetValue(null));
+    }
+
+    public ModuleWeaverTests(ITestOutputHelper output) : 
+        base(output)
+    {
     }
 }
