@@ -9,7 +9,7 @@
     <PackageTags>Module, Initializer, Fields, ILWeaving, Fody, ModuleInit, Cecil</PackageTags>
     <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
     <PackageIconUrl>https://raw.githubusercontent.com/Fody/ModuleInit/master/package_icon.png</PackageIconUrl>
-    <PackageProjectUrl>http://github.com/Fody/ModuleInit</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Fody/ModuleInit</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
   <ItemGroup>
