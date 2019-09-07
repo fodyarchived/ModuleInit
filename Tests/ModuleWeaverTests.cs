@@ -4,7 +4,7 @@ using Xunit;
 using Xunit.Abstractions;
 
 public class ModuleWeaverTests :
-    XunitLoggingBase
+    XunitApprovalBase
 {
     [Fact]
     public void WithFields()
