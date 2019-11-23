@@ -18,6 +18,7 @@ public class ModuleWeaverTests :
             });
         AssertCalled(testResult, "ModuleInitializer");
         AssertCalled(testResult, "Foo.ModuleInitializer");
+        AssertCalled(testResult, "Parent+ModuleInitializer");
     }
 
     static void AssertCalled(TestResult testResult, string name)
