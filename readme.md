@@ -1,5 +1,5 @@
-[![Chat on Gitter](https://img.shields.io/gitter/room/fody/fody.svg?style=flat&max-age=86400)](https://gitter.im/Fody/Fody)
-[![NuGet Status](https://img.shields.io/nuget/v/ModuleInit.Fody.svg?style=flat&max-age=86400)](https://www.nuget.org/packages/ModuleInit.Fody/)
+[![Chat on Gitter](https://img.shields.io/gitter/room/fody/fody.svg)](https://gitter.im/Fody/Fody)
+[![NuGet Status](https://img.shields.io/nuget/v/ModuleInit.Fody.svg)](https://www.nuget.org/packages/ModuleInit.Fody/)
 
 
 ## This is an add-in for [Fody](https://github.com/Fody/Home/)
