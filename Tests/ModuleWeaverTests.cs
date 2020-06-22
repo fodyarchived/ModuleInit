@@ -1,11 +1,8 @@
 ﻿using System.Reflection;
 using Fody;
-using VerifyXunit;
 using Xunit;
-using Xunit.Abstractions;
 
-public class ModuleWeaverTests :
-    VerifyBase
+public class ModuleWeaverTests
 {
     [Fact]
     public void WithFields()
@@ -27,10 +24,5 @@ public class ModuleWeaverTests :
         var type = testResult.Assembly.GetType(name);
         var info = type.GetField("InitializeCalled", BindingFlags.Static | BindingFlags.Public);
         Assert.True((bool)info.GetValue(null));
-    }
-
-    public ModuleWeaverTests(ITestOutputHelper output) :
-        base(output)
-    {
     }
 }
